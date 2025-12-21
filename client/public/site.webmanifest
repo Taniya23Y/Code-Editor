@@ -1,0 +1,20 @@
+{
+  "name": "Code.Compiler - By Taniya Yadav",
+  "short_name": "Code.Compiler",
+  "description": "A powerful online IDE that supports C, C++, JavaScript, TypeScript, Python, Java, Go, Rust, and Swift with real-time execution, saving, downloading, and sharing.",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0f172a"
+}
