@@ -1,13 +1,47 @@
-
-import './App.css'
+import { Route, Routes, useLocation } from "react-router-dom";
+import "./App.css";
+import { useMemo } from "react";
+import Home from "./pages/Home";
+import Signup from "./components/Auth/Signup";
+import Login from "./components/Auth/Login";
+import NotFound from "./pages/NotFound";
+import Footer from "./components/commons/Footer";
+import Navbar from "./components/commons/Navbar/Navbar";
+import About from "./pages/About";
+import Editor from "./pages/Editor";
+import LivePreview from "./pages/LivePreview";
+import DeveloperSnippet from "./pages/DeveloperSnippet";
 
 function App() {
+  const location = useLocation();
+  const pathname = location.pathname;
+
+  const hideNavFooter = useMemo(() => {
+    return ["/login", "/forgot-password", "/signup", "/verify-user"].includes(
+      pathname
+    );
+  }, [pathname]);
 
   return (
     <>
-      <div>h11</div>
+      {!hideNavFooter && <Navbar />}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/aboutus" element={<About />} />
+        <Route path="/live-preview" element={<LivePreview />} />
+        <Route path="/editor" element={<Editor />} />
+        <Route path="/developer-snippet" element={<DeveloperSnippet />} />
+
+        {/* User Auth */}
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+
+      {!hideNavFooter && <Footer />}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
