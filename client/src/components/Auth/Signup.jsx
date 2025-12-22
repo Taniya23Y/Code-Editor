@@ -2,23 +2,36 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import signupImage from "../../assets/images/SignupImage.png";
 import { Eye, EyeOff } from "lucide-react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import { useRegisterUserMutation } from "../../redux/features/auth/authApi";
 
 const Signup = () => {
-  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const [registerUser, { isLoading }] = useRegisterUserMutation();
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSignup = (e) => {
-    e.preventDefault();
-    setLoading(true);
-
-    setTimeout(() => {
-      setLoading(false);
-      toast.success("Account created successfully! 🎉");
-    }, 1500);
-  };
+  const SignupSchema = Yup.object().shape({
+    firstName: Yup.string()
+      .min(2, "Minimum 2 characters")
+      .required("First name is required"),
+    lastName: Yup.string()
+      .min(2, "Minimum 2 characters")
+      .required("Last name is required"),
+    username: Yup.string()
+      .matches(/^[a-zA-Z0-9_]+$/, "Only letters, numbers & underscores allowed")
+      .required("Username is required"),
+    developerType: Yup.string().required("Developer type is required"),
+    email: Yup.string()
+      .email("Invalid email address")
+      .required("Email is required"),
+    password: Yup.string()
+      .min(6, "Password must be at least 6 characters")
+      .required("Password is required"),
+  });
 
   return (
     <section className="relative min-h-screen flex flex-col md:flex-row bg-black text-white">
@@ -49,99 +62,150 @@ const Signup = () => {
             developers worldwide.
           </p>
 
-          <form onSubmit={handleSignup} className="space-y-5">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm mb-1">First Name</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="John"
-                  className="w-full px-4 py-3 rounded-lg bg-[#1c1c1c] border border-gray-700 focus:ring-2 focus:ring-[#67BCFF] outline-none"
-                />
-              </div>
+          <Formik
+            initialValues={{
+              firstName: "",
+              lastName: "",
+              username: "",
+              developerType: "",
+              email: "",
+              password: "",
+            }}
+            validationSchema={SignupSchema}
+            onSubmit={async (values, { resetForm }) => {
+              try {
+                const res = await registerUser(values).unwrap();
 
-              <div>
-                <label className="block text-sm mb-1">Last Name</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="Doe"
-                  className="w-full px-4 py-3 rounded-lg bg-[#1c1c1c] border border-gray-700 focus:ring-2 focus:ring-[#67BCFF] outline-none"
-                />
-              </div>
-            </div>
+                toast.success(
+                  res.message || "Account created! Check your email for OTP."
+                );
 
-            <div>
-              <label className="block text-sm mb-1">
-                Username <span className="text-gray-400">(Unique)</span>
-              </label>
-              <input
-                type="text"
-                required
-                placeholder="john_dev"
-                pattern="^[a-zA-Z0-9_]+$"
-                className="w-full px-4 py-3 rounded-lg bg-[#1c1c1c] border border-gray-700 focus:ring-2 focus:ring-[#9C9EFF] outline-none"
-              />
-              <p className="text-xs text-gray-400 mt-1">
-                Letters, numbers, and underscores only.
-              </p>
-            </div>
+                resetForm();
+                navigate("/verify-email", { state: { email: values.email } });
+              } catch (error) {
+                toast.error(error?.data?.message || "Registration failed!");
+                console.error(error);
+              }
+            }}
+          >
+            {({ handleSubmit }) => (
+              <Form onSubmit={handleSubmit} className="space-y-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm mb-1">First Name</label>
+                    <Field
+                      name="firstName"
+                      className="w-full px-4 py-3 rounded-lg bg-[#1c1c1c] border border-gray-700 focus:ring-2 focus:ring-[#67BCFF] outline-none"
+                      placeholder="John"
+                    />
+                    <ErrorMessage
+                      name="firstName"
+                      component="p"
+                      className="text-red-500 text-xs mt-1"
+                    />
+                  </div>
 
-            <div>
-              <label className="block text-sm mb-1">Developer Type</label>
-              <select
-                required
-                className="w-full px-4 py-3 rounded-lg bg-[#1c1c1c] border border-gray-700 focus:ring-2 focus:ring-[#9C9EFF] outline-none text-gray-300"
-              >
-                <option value="">Select type</option>
-                <option>Frontend Developer</option>
-                <option>Backend Developer</option>
-                <option>Full-Stack Developer</option>
-                <option>Python Developer</option>
-                <option>Java Developer</option>
-                <option>Student / Beginner</option>
-                <option>Other</option>
-              </select>
-            </div>
+                  <div>
+                    <label className="block text-sm mb-1">Last Name</label>
+                    <Field
+                      name="lastName"
+                      className="w-full px-4 py-3 rounded-lg bg-[#1c1c1c] border border-gray-700 focus:ring-2 focus:ring-[#67BCFF] outline-none"
+                      placeholder="Doe"
+                    />
+                    <ErrorMessage
+                      name="lastName"
+                      component="p"
+                      className="text-red-500 text-xs mt-1"
+                    />
+                  </div>
+                </div>
 
-            {/* Email */}
-            <div>
-              <label className="block text-sm mb-1">Email</label>
-              <input
-                type="email"
-                required
-                placeholder="you@example.com"
-                className="w-full px-4 py-3 rounded-lg bg-[#1c1c1c] border border-gray-700 focus:ring-2 focus:ring-[#67BCFF] outline-none"
-              />
-            </div>
+                {/* Username */}
+                <div>
+                  <label className="block text-sm mb-1">Username</label>
+                  <Field
+                    name="username"
+                    className="w-full px-4 py-3 rounded-lg bg-[#1c1c1c] border border-gray-700 focus:ring-2 focus:ring-[#67BCFF] outline-none"
+                    placeholder="john_dev"
+                  />
+                  <ErrorMessage
+                    name="username"
+                    component="p"
+                    className="text-red-500 text-xs mt-1"
+                  />
+                </div>
 
-            <div className="relative">
-              <label className="block text-sm mb-1">Password</label>
-              <input
-                type={showPassword ? "text" : "password"}
-                required
-                placeholder="••••••••"
-                className="w-full px-4 py-3 rounded-lg bg-[#1c1c1c] border border-gray-700 focus:ring-2 focus:ring-[#9C9EFF] outline-none pr-10"
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute top-12 right-3 -translate-y-1/2 text-gray-400 hover:text-white"
-              >
-                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-              </button>
-            </div>
+                {/* Developer Type */}
+                <div>
+                  <label className="block text-sm mb-1">Developer Type</label>
+                  <Field
+                    as="select"
+                    name="developerType"
+                    className="w-full px-4 py-3 rounded-lg bg-[#1c1c1c] border border-gray-700 focus:ring-2 focus:ring-[#9C9EFF] outline-none text-gray-300"
+                  >
+                    <option value="">Select type</option>
+                    <option>Frontend Developer</option>
+                    <option>Backend Developer</option>
+                    <option>Full-Stack Developer</option>
+                    <option>Python Developer</option>
+                    <option>Java Developer</option>
+                    <option>Student / Beginner</option>
+                    <option>Other</option>
+                  </Field>
+                  <ErrorMessage
+                    name="developerType"
+                    component="p"
+                    className="text-red-500 text-xs mt-1"
+                  />
+                </div>
 
-            {/* Submit */}
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full py-3 bg-linear-to-r from-[#67BCFF] via-[#9C9EFF] to-[#CB86FF] rounded-lg font-semibold text-black hover:opacity-90 transition"
-            >
-              {loading ? "Creating account..." : "Sign Up"}
-            </button>
-          </form>
+                <div>
+                  <label className="block text-sm mb-1">Email</label>
+                  <Field
+                    name="email"
+                    type="email"
+                    className="w-full px-4 py-3 rounded-lg bg-[#1c1c1c] border border-gray-700 focus:ring-2 focus:ring-[#67BCFF] outline-none"
+                    placeholder="you@example.com"
+                  />
+                  <ErrorMessage
+                    name="email"
+                    component="p"
+                    className="text-red-500 text-xs mt-1"
+                  />
+                </div>
+
+                <div className="relative">
+                  <label className="block text-sm mb-1">Password</label>
+                  <Field
+                    name="password"
+                    type={showPassword ? "text" : "password"}
+                    className="w-full px-4 py-3 rounded-lg bg-[#1c1c1c] border border-gray-700 focus:ring-2 focus:ring-[#9C9EFF] outline-none pr-10"
+                    placeholder="••••••••"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute cursor-pointer top-12 right-3 -translate-y-1/2 text-gray-400 hover:text-white"
+                  >
+                    {showPassword ? <EyeOff /> : <Eye />}
+                  </button>
+                  <ErrorMessage
+                    name="password"
+                    component="p"
+                    className="text-red-500 text-xs mt-1"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="w-full py-3 cursor-pointer bg-linear-to-r from-[#67BCFF] via-[#9C9EFF] to-[#CB86FF] rounded-lg text-black font-semibold"
+                >
+                  {isLoading ? "Creating account..." : "Sign Up"}
+                </button>
+              </Form>
+            )}
+          </Formik>
 
           <div className="text-center mt-6 text-sm text-gray-400">
             Already have an account?{" "}
@@ -149,6 +213,10 @@ const Signup = () => {
               Login here
             </Link>
           </div>
+
+          <p className="text-center text-xs mt-3 text-gray-400 hover:text-gray-600 transition">
+            <Link to="/">← Back to Home</Link>
+          </p>
         </motion.div>
       </div>
     </section>

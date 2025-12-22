@@ -3,9 +3,13 @@ import { Link } from "react-router-dom";
 import NavDropdown from "./NavDropdown";
 import { cn } from "../../../utils/cn";
 import { Button } from "../Buttons";
+import { useSelector } from "react-redux";
 
 const MobileNav = ({ isOpen }) => {
   const [activeDropdown, setActiveDropdown] = useState(null);
+
+  const { user } = useSelector((state) => state.auth);
+  const isLoggedIn = Boolean(user);
 
   const livePreviewItems = [
     "Save Code",
@@ -73,20 +77,24 @@ const MobileNav = ({ isOpen }) => {
 
         {/* Buttons */}
         <div className="flex flex-col gap-2 pt-3">
-          <Link to="/login">
-            <Button
-              variant="outline"
-              className="h-10 border-white/20 cursor-pointer text-white hover:bg-white/10 hover:text-[#6EB4FC] active:bg-white/20 w-full"
-            >
-              Log in
-            </Button>
-          </Link>
+          {!isLoggedIn && (
+            <>
+              <Link to="/login">
+                <Button
+                  variant="outline"
+                  className="h-10 border-white/20 cursor-pointer text-white hover:bg-white/10 hover:text-[#6EB4FC] active:bg-white/20 w-full"
+                >
+                  Log in
+                </Button>
+              </Link>
 
-          <Link to="/signup">
-            <Button className="h-10 w-full cursor-pointer bg-linear-to-r from-[#67BCFF] via-[#9C9EFF] to-[#CB86FF] text-white border-0 shadow-lg shadow-indigo-500/20 active:opacity-90">
-              Get Started
-            </Button>
-          </Link>
+              <Link to="/signup">
+                <Button className="h-10 w-full cursor-pointer bg-linear-to-r from-[#67BCFF] via-[#9C9EFF] to-[#CB86FF] text-white border-0 shadow-lg shadow-indigo-500/20 active:opacity-90">
+                  Get Started
+                </Button>
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </div>

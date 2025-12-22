@@ -11,16 +11,23 @@ import About from "./pages/About";
 import Editor from "./pages/Editor";
 import LivePreview from "./pages/LivePreview";
 import DeveloperSnippet from "./pages/DeveloperSnippet";
+import VerifyEmail from "./components/Auth/VerifyEmail";
+import ForgotPassword from "./components/Auth/ForgotPassword";
+import UserProfile from "./components/Auth/UserProfile";
+import ProtectedRoute from "./routes/ProtectedRoute";
+import { useRefreshTokenQuery } from "./redux/features/auth/authApi";
 
 function App() {
   const location = useLocation();
   const pathname = location.pathname;
 
   const hideNavFooter = useMemo(() => {
-    return ["/login", "/forgot-password", "/signup", "/verify-user"].includes(
+    return ["/login", "/forgot-password", "/signup", "/verify-email"].includes(
       pathname
     );
   }, [pathname]);
+
+  useRefreshTokenQuery();
 
   return (
     <>
@@ -34,7 +41,13 @@ function App() {
 
         {/* User Auth */}
         <Route path="/signup" element={<Signup />} />
+        <Route path="/verify-email" element={<VerifyEmail />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+
+        <Route element={<ProtectedRoute />}>
+          <Route path="/profile" element={<UserProfile />} />
+        </Route>
 
         <Route path="*" element={<NotFound />} />
       </Routes>
