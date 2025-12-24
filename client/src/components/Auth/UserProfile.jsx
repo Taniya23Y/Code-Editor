@@ -9,6 +9,7 @@ import {
 import { useDispatch } from "react-redux";
 import { logoutState } from "../../redux/features/auth/authSlice";
 import { toast } from "react-toastify";
+import UserSavedCodes from "../Screens/compilerPage/UserSavedCodes";
 
 const UserProfile = () => {
   const navigate = useNavigate();
@@ -46,7 +47,7 @@ const UserProfile = () => {
   }
 
   return (
-    <section className="min-h-screen pt-20 bg-black text-white flex items-center justify-center px-4">
+    <section className="min-h-screen pt-20 bg-black text-white flex items-center justify-center flex-col gap-3 px-4">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -106,6 +107,8 @@ const UserProfile = () => {
           </button>
         </div>
       </motion.div>
+
+      <UserSavedCodes />
     </section>
   );
 };

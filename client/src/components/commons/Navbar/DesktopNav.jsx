@@ -61,7 +61,7 @@ const DesktopNav = () => {
       <nav className="hidden md:flex items-center gap-4 lg:gap-8">
         <Link
           to="/"
-          className="text-white/80 hover:text-[#6EB4FC] transition py-2"
+          className="text-white hover:text-[#6EB4FC] transition py-2"
           onMouseEnter={() => setActiveDropDown(null)}
         >
           Home
@@ -95,7 +95,7 @@ const DesktopNav = () => {
 
         <Link
           to="/aboutus"
-          className="text-white/80 hover:text-[#6EB4FC] transition py-2"
+          className="text-white hover:text-[#6EB4FC] transition py-2"
           onMouseEnter={() => setActiveDropDown(null)}
         >
           About Us

@@ -43,7 +43,7 @@ const MobileNav = ({ isOpen }) => {
         {/* Links */}
         <Link
           to="/"
-          className="py-2 px-2 border-b border-white/10 hover:bg-white/5 hover:text-[#6EB4FC] rounded-md transition-colors active:bg-white/10"
+          className="py-2 px-2 border-b border-white/10 hover:bg-white/5 text-white hover:text-[#6EB4FC] rounded-md transition-colors active:bg-white/10"
         >
           Home
         </Link>
@@ -70,7 +70,7 @@ const MobileNav = ({ isOpen }) => {
 
         <Link
           to="/aboutus"
-          className="py-2 px-2 border-b border-white/10 hover:bg-white/5 hover:text-[#6EB4FC] rounded-md transition-colors active:bg-white/10"
+          className="py-2 px-2 border-b border-white/10 hover:bg-white/5 text-white hover:text-[#6EB4FC] rounded-md transition-colors active:bg-white/10"
         >
           About Us
         </Link>

@@ -52,7 +52,7 @@ const Hero = () => {
               className="inline-flex items-center gap-2 bg-[#b892ff28] backdrop-blur-md border border-purple-400/50 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-xs sm:text-sm shadow-lg shadow-purple-500/10"
             >
               <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 text-amber-400" />
-              <span className="font-medium">
+              <span className="font-medium text-white">
                 Introducing Code.Compiler AI Assistant
               </span>
             </motion.div>
@@ -63,7 +63,7 @@ const Hero = () => {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-4xl sm:text-4xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 leading-tight"
             >
-              <span className="block">Empower Your Code.</span>
+              <span className="block text-white">Empower Your Code.</span>
               <span className="bg-linear-to-r from-[#67BCFF] via-[#9C9EFF] to-[#CB86FF] bg-clip-text text-transparent">
                 Compile. Run. Share.
               </span>
@@ -92,7 +92,7 @@ const Hero = () => {
               </Button>
               <Button
                 variant="outline"
-                className="border-white/20 cursor-pointer text-white hover:bg-white/10 h-10 sm:h-12 px-6 sm:px-8 text-sm sm:text-base"
+                className="border-white/20 cursor-pointer text-black hover:text-white hover:bg-white/10 h-10 sm:h-12 px-6 sm:px-8 text-sm sm:text-base"
               >
                 Watch Demo
               </Button>
@@ -108,7 +108,7 @@ const Hero = () => {
                 {[1, 2, 3, 4].map((i) => (
                   <div
                     key={i}
-                    className="w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-black bg-gray-800 flex items-center justify-center text-xs"
+                    className="w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-black bg-gray-800  text-white flex items-center justify-center text-xs"
                   >
                     {i}
                   </div>
@@ -116,7 +116,7 @@ const Hero = () => {
               </div>
               <div className="text-xs sm:text-sm">
                 <span className="text-white/70">Trusted by</span>{" "}
-                <span className="font-bold">100+</span>{" "}
+                <span className="font-bold text-white">100+</span>{" "}
                 <span className="text-white/70">Developers</span>
               </div>
               <div className="flex items-center gap-0.5 sm:gap-1">
@@ -151,7 +151,6 @@ const Hero = () => {
                     className="w-full h-auto rounded-lg"
                   />
 
-                  {/* Floating elements */}
                   <motion.div
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}

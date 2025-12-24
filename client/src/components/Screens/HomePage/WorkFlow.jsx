@@ -165,7 +165,7 @@ export default function WorkFlow() {
                     <div className="p-6 md:p-8 relative">
                       <div className="flex flex-col md:flex-row gap-6 md:gap-10 items-start">
                         <div className="flex-1">
-                          <h3 className="text-2xl font-bold mb-3">
+                          <h3 className="text-2xl bg-linear-to-r from-[#67BCFF] via-[#9C9EFF] to-[#CB86FF] bg-clip-text text-transparent font-bold mb-3">
                             {step.title}
                           </h3>
                           <p className="text-gray-300">{step.description}</p>

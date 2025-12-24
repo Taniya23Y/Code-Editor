@@ -57,19 +57,13 @@ const Navbar = () => {
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        {/* Logo */}
         <Logo />
 
-        {/* Desktop Nav */}
         <DesktopNav />
 
-        {/* Mobile Right Controls */}
         <div className="md:hidden flex items-center gap-2">
-          {/* Profile */}
-          {/* LOGGED IN */}
           {isLoggedIn && (
             <div className="relative">
-              {/* Avatar */}
               <button
                 onClick={() => setProfileOpen(!profileOpen)}
                 className="w-10 cursor-pointer h-10 rounded-full bg-linear-to-tr from-[#67BCFF] via-[#9C9EFF] to-[#CB86FF] flex items-center justify-center text-white font-bold uppercase"
@@ -83,7 +77,6 @@ const Navbar = () => {
                   user?.firstName?.[0]?.toUpperCase() || "U"
                 )}
               </button>
-
               {profileOpen && (
                 <div className="absolute right-0 mt-3 w-44 bg-[#111] border border-white/10 rounded-xl shadow-lg overflow-hidden z-50">
                   <Link
@@ -112,9 +105,9 @@ const Navbar = () => {
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
             {isMenuOpen ? (
-              <X className="h-7 w-7" />
+              <X className="h-7 w-7 cursor-pointer" />
             ) : (
-              <Menu className="h-7 w-7" />
+              <Menu className="h-7 w-7 cursor-pointer" />
             )}
           </button>
         </div>

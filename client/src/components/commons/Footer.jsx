@@ -68,7 +68,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-4">Product</h3>
+            <h3 className="text-lg text-white font-bold mb-4">Product</h3>
             <ul className="space-y-3">
               <li>
                 <Link
@@ -116,7 +116,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-4">Company</h3>
+            <h3 className="text-lg text-white font-bold mb-4">Company</h3>
             <ul className="space-y-3">
               <li>
                 <Link
@@ -166,7 +166,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-4">Resources</h3>
+            <h3 className="text-lg text-white font-bold mb-4">Resources</h3>
             <ul className="space-y-3">
               <li>
                 <Link
@@ -209,7 +209,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <h1>
+                <h1 className="text-white">
                   💜 Developed by{" "}
                   <span className="text-purple-400">Taniya Yadav</span>
                 </h1>

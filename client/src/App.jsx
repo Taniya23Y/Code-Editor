@@ -22,9 +22,14 @@ function App() {
   const pathname = location.pathname;
 
   const hideNavFooter = useMemo(() => {
-    return ["/login", "/forgot-password", "/signup", "/verify-email"].includes(
-      pathname
-    );
+    return [
+      "/login",
+      "/forgot-password",
+      "/signup",
+      "/verify-email",
+      // "/live-preview",
+      "/editor",
+    ].includes(pathname);
   }, [pathname]);
 
   useRefreshTokenQuery();
@@ -35,7 +40,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<About />} />
-        <Route path="/live-preview" element={<LivePreview />} />
+        <Route path="/live-preview/:urlId?" element={<LivePreview />} />
         <Route path="/editor" element={<Editor />} />
         <Route path="/developer-snippet" element={<DeveloperSnippet />} />
 

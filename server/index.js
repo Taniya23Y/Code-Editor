@@ -4,6 +4,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const dbConnect = require("./config/dbConnect");
 const authRoutes = require("./routes/auth.route");
+const compilerRoutes = require("./routes/compiler.route");
 const redis = require("./config/redis");
 const ErrorHandler = require("./middleware/errorMiddleware");
 
@@ -24,6 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
+app.use("/compiler", compilerRoutes);
 app.use(ErrorHandler);
 
 app.use((req, res) => {

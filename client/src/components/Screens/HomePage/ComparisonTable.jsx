@@ -22,7 +22,7 @@ export default function ComparisonTable() {
       <div className="container relative px-4 md:px-8">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <p className="text-purple-400 font-medium mb-2">Why Choose Us?</p>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <h2 className="text-3xl bg-linear-to-r from-[#67BCFF] via-[#9C9EFF] to-[#CB86FF] bg-clip-text text-transparent md:text-4xl font-bold mb-6">
             Code.Compiler vs Other Platforms
           </h2>
           <p className="text-gray-400 text-lg">

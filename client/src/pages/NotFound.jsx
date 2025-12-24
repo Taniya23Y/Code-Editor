@@ -56,7 +56,7 @@ const NotFound = () => {
       {/* Buttons */}
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6 w-full">
         <Link
-          href="/"
+          to="/"
           className="group px-6 py-3 bg-linear-to-r from-[#67BCFF] via-[#9C9EFF] to-[#CB86FF] text-black font-semibold rounded-full shadow-md transition duration-200 flex items-center gap-2"
         >
           <svg
@@ -72,7 +72,7 @@ const NotFound = () => {
         </Link>
 
         <Link
-          href="/editor"
+          to="/live-preview"
           className="group px-6 py-3 bg-linear-to-r from-[#67BCFF] via-[#9C9EFF] to-[#CB86FF] text-black font-semibold rounded-full shadow-md transition duration-200 flex items-center gap-2"
         >
           <svg

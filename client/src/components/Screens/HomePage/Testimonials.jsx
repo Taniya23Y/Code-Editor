@@ -92,7 +92,7 @@ export default function Testimonials() {
         >
           <h2
             id="testimonials-heading"
-            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4"
+            className="text-2xl bg-linear-to-r from-[#67BCFF] via-[#9C9EFF] to-[#CB86FF] bg-clip-text text-transparent sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4"
           >
             What Our Developers Say
           </h2>
@@ -142,7 +142,7 @@ export default function Testimonials() {
                   <div className="md:w-1/3 w-full">
                     <div className="relative max-w-40 mx-auto">
                       <div
-                        className="absolute -inset-1 bg-linear-to-r from-[#67BCFF] via-[#9C9EFF] to-[#CB86FF] rounded-full blur-sm"
+                        className="absolute -inset-1 bg-linear-to-r from-[#67BCFF] via-[#9C9EFF] to-[#CB86FF]  rounded-full blur-sm"
                         aria-hidden="true"
                       ></div>
                       <div className="relative h-20 w-20 sm:h-24 sm:w-24 mx-auto overflow-hidden rounded-full">
@@ -156,7 +156,7 @@ export default function Testimonials() {
                       </div>
                     </div>
 
-                    <div className="text-center mt-4">
+                    <div className="text-center text-white mt-4">
                       <h4 className="font-bold">
                         {testimonials[current].author}
                       </h4>
@@ -184,7 +184,7 @@ export default function Testimonials() {
                   </div>
 
                   <div className="md:w-2/3 w-full">
-                    <p className="text-base sm:text-lg md:text-xl italic mb-4 sm:mb-6 text-center md:text-left">
+                    <p className="text-base text-white sm:text-lg md:text-xl italic mb-4 sm:mb-6 text-center md:text-left">
                       &ldquo;{testimonials[current].quote}&ldquo;
                     </p>
                     <div
@@ -205,7 +205,7 @@ export default function Testimonials() {
               variant="outline"
               size="icon"
               onClick={prev}
-              className="h-8 w-8 sm:h-10 sm:w-10 rounded-full border-white/10 hover:bg-white/10 focus:ring-2 focus:ring-white focus:outline-none"
+              className="h-8 w-8 sm:h-10 sm:w-10 rounded-full cursor-pointer border-white/10 hover:bg-white/10 hover:text-white focus:ring-2 focus:ring-white focus:outline-none"
               aria-label="Previous testimonial"
             >
               <ChevronLeft
@@ -217,7 +217,7 @@ export default function Testimonials() {
               variant="outline"
               size="icon"
               onClick={next}
-              className="h-8 w-8 sm:h-10 sm:w-10 rounded-full border-white/10 hover:bg-white/10 focus:ring-2 focus:ring-white focus:outline-none"
+              className="h-8 w-8 sm:h-10 sm:w-10 cursor-pointer rounded-full border-white/10 hover:bg-white/10 hover:text-white focus:ring-2 focus:ring-white focus:outline-none"
               aria-label="Next testimonial"
             >
               <ChevronRight
