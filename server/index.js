@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 const dbConnect = require("./config/dbConnect");
 const authRoutes = require("./routes/auth.route");
 const compilerRoutes = require("./routes/compiler.route");
+const codeRunnerRoutes = require("./routes/codeRunner.route");
 const redis = require("./config/redis");
 const ErrorHandler = require("./middleware/errorMiddleware");
 
@@ -26,6 +27,7 @@ app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
 app.use("/compiler", compilerRoutes);
+app.use("/api/code-runner", codeRunnerRoutes);
 app.use(ErrorHandler);
 
 app.use((req, res) => {

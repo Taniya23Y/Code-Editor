@@ -22,12 +22,18 @@ function App() {
   const pathname = location.pathname;
 
   const hideNavFooter = useMemo(() => {
+    return ["/login", "/forgot-password", "/signup", "/verify-email"].includes(
+      pathname
+    );
+  }, [pathname]);
+
+  const hideFooter = useMemo(() => {
     return [
       "/login",
       "/forgot-password",
       "/signup",
       "/verify-email",
-      // "/live-preview",
+      "/live-preview",
       "/editor",
     ].includes(pathname);
   }, [pathname]);
@@ -57,7 +63,8 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
 
-      {!hideNavFooter && <Footer />}
+      {/* {!hideNavFooter && <Footer />} */}
+      {!hideFooter && <Footer />}
     </>
   );
 }

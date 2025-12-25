@@ -75,7 +75,7 @@ export default function Features() {
 
       <div className="container relative px-4 md:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-4xl">
+          <h2 className="text-transparent bg-clip-text bg-linear-to-r from-[#67BCFF] via-[#9C9EFF] to-[#CB86FF] mb-4 text-3xl font-bold tracking-tight md:text-4xl">
             Powerful Features
           </h2>
           <p className="mb-16 text-lg text-gray-400">

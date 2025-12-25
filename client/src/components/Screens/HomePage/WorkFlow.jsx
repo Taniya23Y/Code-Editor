@@ -106,7 +106,7 @@ export default function WorkFlow() {
           <span className="inline-block px-4 py-1.5 text-xs font-medium text-sky-300 bg-gray-950/50 rounded-full backdrop-blur-sm mb-4">
             Build, Run & Share
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
+          <h2 className="text-4xl text-white md:text-5xl font-bold mb-6 tracking-tight">
             How{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-[#67BCFF] via-[#9C9EFF] to-[#CB86FF]">
               {" "}
