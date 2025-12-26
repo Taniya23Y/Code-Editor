@@ -6,6 +6,8 @@ const dbConnect = require("./config/dbConnect");
 const authRoutes = require("./routes/auth.route");
 const compilerRoutes = require("./routes/compiler.route");
 const codeRunnerRoutes = require("./routes/codeRunner.route");
+const shareCodeRoutes = require("./routes/shareCode.route");
+const languageCodeRoutes = require("./routes/languageCode.route");
 const redis = require("./config/redis");
 const ErrorHandler = require("./middleware/errorMiddleware");
 
@@ -28,6 +30,8 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/compiler", compilerRoutes);
 app.use("/api/code-runner", codeRunnerRoutes);
+app.use("/api/share", shareCodeRoutes);
+app.use("/api/language-code", languageCodeRoutes);
 app.use(ErrorHandler);
 
 app.use((req, res) => {

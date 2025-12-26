@@ -11,6 +11,7 @@ const {
   resetPassword,
   logout,
   getProfile,
+  getPublicProfile,
 } = require("../controllers/auth.controller");
 
 const {
@@ -30,6 +31,12 @@ router.post("/verify-forgot-password", verifyForgotPassword);
 router.post("/reset-password", resetPassword);
 
 router.get("/profile", autoRefreshAuth, isAuthenticated, getProfile);
+router.get(
+  "/public-profile/:username",
+  autoRefreshAuth,
+  isAuthenticated,
+  getPublicProfile
+);
 router.post("/logout", isAuthenticated, logout);
 
 router.get(

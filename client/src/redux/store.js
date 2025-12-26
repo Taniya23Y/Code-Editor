@@ -5,12 +5,16 @@ import compilerReducer from "./features/compiler/compilerSlice";
 import { apiSlice } from "./features/api/apiSlice";
 import { codeSlice } from "./features/compiler/codeSlice";
 import { codeRunnerApi } from "./features/codeRunner/codeRunnerApi";
+import { shareApi } from "./features/codeRunner/shareApi";
+import { languageCodeApi } from "./features/codeRunner/languageCodeApi";
 
 export const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
     [codeSlice.reducerPath]: codeSlice.reducer,
     [codeRunnerApi.reducerPath]: codeRunnerApi.reducer,
+    [shareApi.reducerPath]: shareApi.reducer,
+    [languageCodeApi.reducerPath]: languageCodeApi.reducer,
 
     auth: authReducer,
     compiler: compilerReducer,
@@ -19,6 +23,8 @@ export const store = configureStore({
     getDefaultMiddleware().concat(
       apiSlice.middleware,
       codeSlice.middleware,
-      codeRunnerApi.middleware
+      codeRunnerApi.middleware,
+      shareApi.middleware,
+      languageCodeApi.middleware
     ),
 });

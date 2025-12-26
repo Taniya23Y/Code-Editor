@@ -16,6 +16,7 @@ import ForgotPassword from "./components/Auth/ForgotPassword";
 import UserProfile from "./components/Auth/UserProfile";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import { useRefreshTokenQuery } from "./redux/features/auth/authApi";
+import PublicProfile from "./components/Auth/PublicProfile";
 
 function App() {
   const location = useLocation();
@@ -47,7 +48,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/aboutus" element={<About />} />
         <Route path="/live-preview/:urlId?" element={<LivePreview />} />
-        <Route path="/editor" element={<Editor />} />
+        <Route path="/editor/:shareId?" element={<Editor />} />
         <Route path="/developer-snippet" element={<DeveloperSnippet />} />
 
         {/* User Auth */}
@@ -60,6 +61,7 @@ function App() {
           <Route path="/profile" element={<UserProfile />} />
         </Route>
 
+        <Route path="/public-profile/:username" element={<PublicProfile />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
 

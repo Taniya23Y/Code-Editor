@@ -43,13 +43,10 @@ const HelperHeader = () => {
   const [shareBtn, setShareBtn] = useState(!!urlId);
   const [open, setOpen] = useState(false);
 
-  // Ref to track if user typed
   const hasTypedRef = useRef(false);
 
-  // Initialize from Redux / fallback
   const [postTitle, setPostTitle] = useState(titleFromRedux || "My Code");
 
-  // Update postTitle if Redux value changes but user hasn't typed
   useEffect(() => {
     if (!hasTypedRef.current && titleFromRedux) {
       setPostTitle(titleFromRedux);
@@ -57,7 +54,7 @@ const HelperHeader = () => {
   }, [titleFromRedux]);
 
   const handleChange = (e) => {
-    hasTypedRef.current = true; // mark that user typed
+    hasTypedRef.current = true;
     setPostTitle(e.target.value);
   };
 
@@ -68,7 +65,6 @@ const HelperHeader = () => {
   const [saveCode, { isLoading }] = useSaveCodeMutation();
   const [editCode, { isLoading: editLoading }] = useEditCodeMutation();
 
-  /* ---------------- DOWNLOAD ---------------- */
   const handleDownloadCode = () => {
     if (!fullCode.html && !fullCode.css && !fullCode.javascript) {
       return toast.error("Error: Code is Empty");
@@ -96,7 +92,6 @@ const HelperHeader = () => {
     toast.success("Code Downloaded Successfully!");
   };
 
-  /* ---------------- SAVE ---------------- */
   const handleSaveCode = async () => {
     if (!isLoggedIn) {
       toast.error("Please login to save code");
@@ -138,7 +133,6 @@ const HelperHeader = () => {
   return (
     <div className="h-12.5 bg-black text-white p-2 flex justify-between items-center">
       <div className="flex gap-1">
-        {/* SAVE */}
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
             <Button
@@ -180,12 +174,10 @@ const HelperHeader = () => {
           )}
         </Dialog>
 
-        {/* DOWNLOAD */}
         <Button size="icon" variant="blue" onClick={handleDownloadCode}>
           <Download size={16} />
         </Button>
 
-        {/* SHARE + EDIT */}
         {shareBtn && (
           <>
             {isOwner && (
@@ -235,7 +227,6 @@ const HelperHeader = () => {
         )}
       </div>
 
-      {/* LANGUAGE SELECT */}
       <div className="flex items-center gap-2">
         <small>Current Language:</small>
         <Select

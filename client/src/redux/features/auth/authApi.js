@@ -102,6 +102,10 @@ export const authApi = apiSlice.injectEndpoints({
       query: () => "/profile",
     }),
 
+    getPublicProfile: builder.query({
+      query: (username) => `/public-profile/${username}`,
+    }),
+
     getAdminDashboard: builder.query({
       query: () => "/admin/dashboard",
     }),
@@ -117,5 +121,6 @@ export const {
   useResetPasswordMutation,
   useLogoutUserMutation,
   useGetProfileQuery,
+  useGetPublicProfileQuery,
   useGetAdminDashboardQuery,
 } = authApi;

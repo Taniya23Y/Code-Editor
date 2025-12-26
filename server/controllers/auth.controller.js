@@ -1,5 +1,7 @@
 require("dotenv").config();
 const Auth = require("../models/auth.model");
+const LanguageCode = require("../models/languageCode.model");
+const Code = require("../models/code.model");
 const ErrorHandler = require("../utils/errorHandler");
 const asyncHandler = require("../middleware/asyncHandler");
 const { validateRegistration, validateForgot } = require("../utils/validators");
@@ -317,5 +319,46 @@ exports.getProfile = asyncHandler(async (req, res, next) => {
   res.status(200).json({
     success: true,
     user,
+  });
+});
+
+exports.getPublicProfile = asyncHandler(async (req, res) => {
+  const { username } = req.params;
+
+  const user = await Auth.findOne({ username }).select(
+    "firstName lastName username developerType createdAt"
+  );
+
+  if (!user) {
+    return res.status(404).json({
+      success: false,
+      message: "User not found",
+    });
+  }
+
+  // ✅ Editor codes (IMPORTANT: sourceCode included)
+  const editorCodes = await LanguageCode.find({
+    owner: user._id,
+    isPublic: true,
+  }).select("title language sourceCode views createdAt");
+
+  // ✅ Live preview codes (IMPORTANT: html / code included)
+  const liveCodes = await Code.find({
+    owner: user._id,
+    isPublic: true,
+  }).select("title html code views starCount createdAt");
+
+  res.status(200).json({
+    success: true,
+    user,
+    stats: {
+      editorCount: editorCodes.length,
+      liveCount: liveCodes.length,
+      totalViews:
+        editorCodes.reduce((a, c) => a + (c.views || 0), 0) +
+        liveCodes.reduce((a, c) => a + (c.views || 0), 0),
+    },
+    editorCodes,
+    liveCodes,
   });
 });
