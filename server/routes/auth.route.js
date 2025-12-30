@@ -31,12 +31,7 @@ router.post("/verify-forgot-password", verifyForgotPassword);
 router.post("/reset-password", resetPassword);
 
 router.get("/profile", autoRefreshAuth, isAuthenticated, getProfile);
-router.get(
-  "/public-profile/:username",
-  autoRefreshAuth,
-  isAuthenticated,
-  getPublicProfile
-);
+router.get("/public-profile/:username", getPublicProfile);
 router.post("/logout", isAuthenticated, logout);
 
 router.get(

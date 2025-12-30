@@ -60,24 +60,6 @@ exports.saveLanguageCode = async (req, res) => {
   }
 };
 
-exports.getLanguageCode = async (req, res) => {
-  try {
-    const { id } = req.params;
-
-    const code = await LanguageCode.findById(id);
-    if (!code) {
-      return res.status(404).json({ message: "Code not found" });
-    }
-
-    code.views += 1;
-    await code.save();
-
-    res.json({ success: true, code });
-  } catch (err) {
-    res.status(500).json({ message: "Fetch failed" });
-  }
-};
-
 exports.updateLanguageCode = async (req, res) => {
   try {
     const { id } = req.params;
@@ -92,7 +74,6 @@ exports.updateLanguageCode = async (req, res) => {
       });
     }
 
-    /* 🔒 owner check */
     if (code.owner.toString() !== req.user.id) {
       return res.status(403).json({
         success: false,
@@ -100,7 +81,6 @@ exports.updateLanguageCode = async (req, res) => {
       });
     }
 
-    /* update fields */
     if (title !== undefined) code.title = title;
     if (language !== undefined) code.language = language;
     if (sourceCode !== undefined) code.sourceCode = sourceCode;
@@ -140,6 +120,81 @@ exports.getMyLanguageCodes = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Failed to load saved editor codes",
+    });
+  }
+};
+
+exports.deleteLanguageCode = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const code = await LanguageCode.findById(id);
+    if (!code) {
+      return res.status(404).json({
+        success: false,
+        message: "Code not found",
+      });
+    }
+
+    if (code.owner.toString() !== req.user.id) {
+      return res.status(403).json({
+        success: false,
+        message: "You are not allowed to delete this code",
+      });
+    }
+
+    await code.deleteOne();
+
+    res.status(200).json({
+      success: true,
+      message: "Code deleted successfully",
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Delete failed",
+    });
+  }
+};
+
+exports.getLanguageCode = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const code = await LanguageCode.findById(id);
+    if (!code) {
+      return res.status(404).json({ message: "Code not found" });
+    }
+
+    code.views += 1;
+    await code.save();
+
+    res.json({
+      success: true,
+      code: {
+        ...code.toObject(), // convert Mongoose doc to plain object
+        owner: code.owner.toString(), // ensure owner is string
+      },
+    });
+  } catch (err) {
+    res.status(500).json({ message: "Fetch failed" });
+  }
+};
+
+exports.getPublicLanguageCodes = async (req, res) => {
+  try {
+    const codes = await LanguageCode.find({ isPublic: true })
+      .sort({ createdAt: -1 })
+      .select("_id title language sourceCode owner ownerName views createdAt");
+
+    res.status(200).json({
+      success: true,
+      data: codes,
+    });
+  } catch (error) {
+    console.error("GET PUBLIC LANGUAGE CODES ERROR:", error);
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch public language codes",
     });
   }
 };

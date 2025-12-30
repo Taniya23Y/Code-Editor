@@ -114,7 +114,7 @@ const PublicProfile = () => {
               previewCode={
                 c.sourceCode?.slice(0, 300) || "// No preview available"
               }
-              onClick={() => navigate(`/editor/${c._id}`)}
+              onClick={() => navigate(`/editor?code=${c._id}`)}
             />
           ))}
         </Section>

@@ -30,6 +30,17 @@ export const languageCodeApi = createApi({
     getMyLanguageCodes: builder.query({
       query: () => "/api/language-code/my-langCodes",
     }),
+
+    getPublicCodes: builder.query({
+      query: () => "/api/language-code/public-codes",
+    }),
+
+    deleteLanguageCode: builder.mutation({
+      query: (id) => ({
+        url: `/language-code/${id}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
@@ -38,4 +49,6 @@ export const {
   useGetLanguageCodeQuery,
   useUpdateLanguageCodeMutation,
   useGetMyLanguageCodesQuery,
+  useGetPublicCodesQuery,
+  useDeleteLanguageCodeMutation,
 } = languageCodeApi;

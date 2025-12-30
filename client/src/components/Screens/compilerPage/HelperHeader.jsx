@@ -196,19 +196,19 @@ const HelperHeader = () => {
                   <Share2 size={16} />
                 </Button>
               </DialogTrigger>
-              <DialogContent>
+              <DialogContent className="bg-[#111] border border-[#333]">
                 <DialogHeader>
-                  <DialogTitle className="flex gap-1 justify-center items-center">
+                  <DialogTitle className="flex text-white gap-1 justify-center items-center">
                     <Code /> Share your Code!
                   </DialogTitle>
                   <DialogDescription className="text-center text-sm text-muted-foreground">
-                    Give your code a title and save it to your profile
+                    Anyone with this link can view your code
                   </DialogDescription>
                   <div className="flex gap-1">
                     <input
                       disabled
                       value={window.location.href}
-                      className="w-full p-2 rounded bg-slate-800 text-white"
+                      className="w-full p-2 rounded bg-black text-green-400"
                     />
                     <Button
                       variant="outline"
@@ -216,8 +216,9 @@ const HelperHeader = () => {
                         navigator.clipboard.writeText(window.location.href);
                         toast.success("URL Copied!");
                       }}
+                      className="bg-blue-600 px-3 cursor-pointer rounded text-white hover:bg-blue-700"
                     >
-                      Copy
+                      <Copy size={16} />
                     </Button>
                   </div>
                 </DialogHeader>

@@ -336,13 +336,11 @@ exports.getPublicProfile = asyncHandler(async (req, res) => {
     });
   }
 
-  // ✅ Editor codes (IMPORTANT: sourceCode included)
   const editorCodes = await LanguageCode.find({
     owner: user._id,
     isPublic: true,
   }).select("title language sourceCode views createdAt");
 
-  // ✅ Live preview codes (IMPORTANT: html / code included)
   const liveCodes = await Code.find({
     owner: user._id,
     isPublic: true,
