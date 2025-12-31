@@ -6,7 +6,7 @@ import { setCredentials, logoutState } from "../auth/authSlice";
 const mutex = new Mutex();
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:4000/api/auth",
+  baseUrl: "https://code-compiler-d1xb.onrender.com/api/auth",
   credentials: "include",
 });
 
