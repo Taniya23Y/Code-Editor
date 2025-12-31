@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const ErrorHandler = require("../utils/errorHandler");
+const ErrorHandler = require("../utils/ErrorHandler");
 const asyncHandler = require("./asyncHandler");
 const redis = require("../config/redis");
 const Auth = require("../models/auth.model");

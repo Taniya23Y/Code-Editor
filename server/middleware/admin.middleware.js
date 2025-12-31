@@ -1,4 +1,4 @@
-const ErrorHandler = require("../utils/errorHandler");
+const ErrorHandler = require("../utils/ErrorHandler");
 const asyncHandler = require("./asyncHandler");
 
 exports.isAdmin = asyncHandler(async (req, res, next) => {
