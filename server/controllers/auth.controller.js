@@ -2,7 +2,7 @@ require("dotenv").config();
 const Auth = require("../models/auth.model");
 const LanguageCode = require("../models/languageCode.model");
 const Code = require("../models/code.model");
-const ErrorHandler = require("../utils/errorHandler");
+const ErrorHandler = require("../utils/ErrorHandler");
 const asyncHandler = require("../middleware/asyncHandler");
 const { validateRegistration, validateForgot } = require("../utils/validators");
 const emailService = require("../utils/welcomeService");
