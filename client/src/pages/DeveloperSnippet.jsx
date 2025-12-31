@@ -113,7 +113,6 @@ const DeveloperSnippet = () => {
         </p>
       </motion.div>
 
-      {/* Search */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -130,7 +129,6 @@ const DeveloperSnippet = () => {
         </div>
       </motion.div>
 
-      {/* Filters */}
       <div className="max-w-6xl mx-auto flex flex-wrap items-center gap-3 mb-8">
         {languages.map((lang) => (
           <motion.button

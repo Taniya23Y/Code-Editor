@@ -120,7 +120,6 @@ const Signup = () => {
                   </div>
                 </div>
 
-                {/* Username */}
                 <div>
                   <label className="block text-sm mb-1">Username</label>
                   <Field
@@ -135,7 +134,6 @@ const Signup = () => {
                   />
                 </div>
 
-                {/* Developer Type */}
                 <div>
                   <label className="block text-sm mb-1">Developer Type</label>
                   <Field

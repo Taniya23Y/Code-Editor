@@ -91,7 +91,6 @@ const VerifyEmail = () => {
                   />
                 </div>
 
-                {/* Submit Button */}
                 <button
                   type="submit"
                   disabled={isLoading}

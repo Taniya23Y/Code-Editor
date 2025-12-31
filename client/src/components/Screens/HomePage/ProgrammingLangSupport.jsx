@@ -110,14 +110,12 @@ func main(){ fmt.Println("Hello World") }`,
       className="py-12 sm:py-16 md:py-24 bg-black relative overflow-hidden"
       aria-labelledby="integrations-heading"
     >
-      {/* Background */}
       <div className="absolute inset-0 z-0" aria-hidden="true">
         <div className="absolute top-0 left-0 w-1/3 h-1/3 bg-sky-500/10 rounded-full blur-[100px]"></div>
         <div className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-purple-500/10 rounded-full blur-[100px]"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -184,7 +182,6 @@ func main(){ fmt.Println("Hello World") }`,
         </div>
       </div>
 
-      {/* Code Snippet Modal */}
       {selectedLanguage && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md p-4">
           <motion.div

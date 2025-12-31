@@ -3,22 +3,18 @@ import * as SelectPrimitive from "@radix-ui/react-select";
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-/* ---------- ROOT ---------- */
 const Select = (props) => {
   return <SelectPrimitive.Root data-slot="select" {...props} />;
 };
 
-/* ---------- GROUP ---------- */
 const SelectGroup = (props) => {
   return <SelectPrimitive.Group data-slot="select-group" {...props} />;
 };
 
-/* ---------- VALUE ---------- */
 const SelectValue = (props) => {
   return <SelectPrimitive.Value data-slot="select-value" {...props} />;
 };
 
-/* ---------- TRIGGER ---------- */
 const SelectTrigger = ({ className, size = "default", children, ...props }) => {
   return (
     <SelectPrimitive.Trigger
@@ -38,7 +34,6 @@ const SelectTrigger = ({ className, size = "default", children, ...props }) => {
   );
 };
 
-/* ---------- CONTENT ---------- */
 const SelectContent = ({
   className,
   children,
@@ -68,7 +63,6 @@ const SelectContent = ({
   );
 };
 
-/* ---------- LABEL ---------- */
 const SelectLabel = ({ className, ...props }) => {
   return (
     <SelectPrimitive.Label
@@ -79,7 +73,6 @@ const SelectLabel = ({ className, ...props }) => {
   );
 };
 
-/* ---------- ITEM ---------- */
 const SelectItem = ({ className, children, ...props }) => {
   return (
     <SelectPrimitive.Item
@@ -100,7 +93,6 @@ const SelectItem = ({ className, children, ...props }) => {
   );
 };
 
-/* ---------- SEPARATOR ---------- */
 const SelectSeparator = ({ className, ...props }) => {
   return (
     <SelectPrimitive.Separator
@@ -111,7 +103,6 @@ const SelectSeparator = ({ className, ...props }) => {
   );
 };
 
-/* ---------- SCROLL BUTTONS ---------- */
 const SelectScrollUpButton = ({ className, ...props }) => {
   return (
     <SelectPrimitive.ScrollUpButton
@@ -136,7 +127,6 @@ const SelectScrollDownButton = ({ className, ...props }) => {
   );
 };
 
-/* ---------- EXPORTS ---------- */
 export {
   Select,
   SelectGroup,

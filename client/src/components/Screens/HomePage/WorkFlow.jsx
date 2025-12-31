@@ -2,14 +2,13 @@
 import { useRef, useEffect } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
 import { ArrowRight, CheckCircle, ChevronRight } from "lucide-react";
-import signupPng from "../../../assets/images/Hero-Code.png";
-import editorPng from "../../../assets/images/Hero-Code.png";
-import livePreviewPng from "../../../assets/images/Hero-Code.png";
-import communityPng from "../../../assets/images/Hero-Code.png";
-import profilePng from "../../../assets/images/Hero-Code.png";
+import signupPng from "../../../assets/images/signupPng.png";
+import editorPng from "../../../assets/images/editorPng.png";
+import livePreviewPng from "../../../assets/images/livePreviewPng.png";
+import communityPng from "../../../assets/images/communityPng.png";
+import profilePng from "../../../assets/images/profilePng.png";
 
 export default function WorkFlow() {
-  // Refs for scroll triggering
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.1 });
   const mainControls = useAnimation();
@@ -95,8 +94,6 @@ export default function WorkFlow() {
       className="relative py-24 bg-linear-to-b from-gray-950 via-gray-900 to-gray-950"
     >
       <div className="container mx-auto px-4 md:px-8">
-        {/* Section Header */}
-
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -121,12 +118,9 @@ export default function WorkFlow() {
           </p>
         </motion.div>
 
-        {/* Interactive Timeline */}
         <div className="relative max-w-6xl mx-auto">
-          {/* Main vertical line for desktop */}
           <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-linear-to-r from-[#67BCFF] via-[#9C9EFF] to-[#CB86FF] rounded-full transform -translate-x-1/2" />
 
-          {/* Steps container */}
           <div className="space-y-20 md:space-y-32">
             {steps.map((step, index) => (
               <motion.div
@@ -192,13 +186,12 @@ export default function WorkFlow() {
                           </div>
                         </div>
 
-                        <div className="relative shrink-0 md:w-1/2 aspect-4/3 rounded-lg overflow-hidden">
-                          <div className="absolute inset-0 bg-linear-to-br from-purple-600/10 to-pink-600/10 z-10" />
+                        <div className="relative shrink-0 md:w-1/2 w-full rounded-lg overflow-hidden">
+                          <div className="absolute inset-0  z-10 pointer-events-none" />
                           <img
                             src={step.image || "/placeholder.svg"}
                             alt={step.title}
-                            fill
-                            className="object-cover"
+                            className="w-full h-full object-cover"
                           />
                         </div>
                       </div>

@@ -57,7 +57,6 @@ const DesktopNav = () => {
 
   return (
     <>
-      {/* MAIN NAV */}
       <nav className="hidden md:flex items-center gap-4 lg:gap-8">
         <Link
           to="/"
@@ -122,7 +121,6 @@ const DesktopNav = () => {
           </>
         )}
 
-        {/* LOGGED IN */}
         {isLoggedIn && (
           <div className="relative">
             {/* Avatar */}

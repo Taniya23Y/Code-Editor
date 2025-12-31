@@ -53,7 +53,6 @@ const NotFound = () => {
         The page you&apos;re looking for doesn&apos;t exist.
       </motion.p>
 
-      {/* Buttons */}
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6 w-full">
         <Link
           to="/"

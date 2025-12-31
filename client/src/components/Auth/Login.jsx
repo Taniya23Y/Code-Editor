@@ -82,7 +82,6 @@ const Login = () => {
           >
             {() => (
               <Form className="space-y-5">
-                {/* Email */}
                 <div>
                   <label className="block text-sm mb-1 text-gray-300">
                     Email
@@ -103,7 +102,6 @@ const Login = () => {
                   />
                 </div>
 
-                {/* Password */}
                 <div>
                   <label className="block text-sm mb-1 text-gray-300">
                     Password
@@ -141,7 +139,6 @@ const Login = () => {
                   </div>
                 </div>
 
-                {/* Submit */}
                 <button
                   type="submit"
                   disabled={isLoading}
@@ -153,7 +150,6 @@ const Login = () => {
             )}
           </Formik>
 
-          {/* Footer */}
           <div className="text-center mt-6 text-sm text-gray-400">
             Don’t have an account?{" "}
             <Link to="/signup" className="text-[#67BCFF] hover:underline">

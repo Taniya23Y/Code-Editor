@@ -31,19 +31,16 @@ const PublicProfile = () => {
 
   return (
     <section className="min-h-screen bg-black text-white">
-      {/* Banner */}
       <div className="relative h-64 bg-linear-to-r from-blue-600 via-purple-600 to-pink-600">
         <div className="absolute inset-0 bg-black/40" />
       </div>
 
       <div className="relative max-w-6xl mx-auto px-4 -mt-24">
-        {/* Profile Card */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           className="bg-[#0f0f0f] border border-white/10 rounded-3xl p-6"
         >
-          {/* Header */}
           <div className="flex flex-col md:flex-row items-center gap-6">
             <div className="w-28 h-28 rounded-full bg-linear-to-tr from-blue-400 to-purple-500 flex items-center justify-center text-4xl font-bold">
               {user.firstName?.charAt(0)}
@@ -60,7 +57,6 @@ const PublicProfile = () => {
             </div>
           </div>
 
-          {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
             <Stat
               icon={<Code2 />}
@@ -81,7 +77,6 @@ const PublicProfile = () => {
           </div>
         </motion.div>
 
-        {/* Live Projects */}
         <Section title="Live Preview Projects">
           {liveCodes.map((c) => (
             <CodeCard
@@ -101,7 +96,6 @@ const PublicProfile = () => {
           ))}
         </Section>
 
-        {/* Editor Codes */}
         <Section title="Editor Snippets">
           {editorCodes.map((c) => (
             <CodeCard
@@ -124,8 +118,6 @@ const PublicProfile = () => {
 };
 
 export default PublicProfile;
-
-/* ---------- Components ---------- */
 
 const Stat = ({ icon, label, value }) => (
   <div className="bg-black/50 border border-white/10 rounded-xl p-4 text-center">
@@ -161,7 +153,6 @@ const CodeCard = ({
     className="cursor-pointer bg-[#111] border border-white/10 rounded-2xl overflow-hidden
                hover:border-purple-500/60 transition"
   >
-    {/* Preview */}
     <div className="relative h-32 bg-black overflow-hidden">
       <pre className="h-full p-3 text-xs text-green-400/80 whitespace-pre-wrap wrap-break-words select-none">
         {previewCode}
@@ -169,7 +160,6 @@ const CodeCard = ({
       <div className="absolute inset-0 bg-linear-to-t from-black via-black/60 to-transparent" />
     </div>
 
-    {/* Info */}
     <div className="p-5">
       <h3 className="font-semibold truncate">{title || "Untitled Code"}</h3>
       <p className="text-xs text-gray-500 uppercase mt-1">{type}</p>

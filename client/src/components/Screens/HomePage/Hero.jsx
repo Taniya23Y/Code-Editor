@@ -28,7 +28,6 @@ const Hero = () => {
 
   return (
     <section className="relative container mx-auto flex items-center pt-20 md:pt-20 overflow-hidden bg-black">
-      {/* Background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 left-0 w-full h-full bg-linear-to-b from-black via-black to-black/90"></div>
 
@@ -43,7 +42,6 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 py-8 sm:py-0">
-          {/* Hero content */}
           <div className="flex-1 text-center lg:text-left">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

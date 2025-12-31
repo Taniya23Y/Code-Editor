@@ -63,7 +63,6 @@ const codeSchema = new Schema(
   { timestamps: true }
 );
 
-// auto-sync starCount
 codeSchema.pre("save", async function () {
   this.starCount = this.stars.length;
 });

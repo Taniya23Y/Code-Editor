@@ -5,7 +5,6 @@ const HeroAbout = () => {
   return (
     <section className="relative min-h-svh flex items-center pt-16 sm:pt-20 overflow-hidden bg-black text-white pb-12">
       <div className="container mx-auto flex flex-col gap-20 px-4">
-        {/* Hero Section */}
         <div className="text-center max-w-4xl mx-auto">
           <h1 className="text-4xl sm:text-6xl font-extrabold mb-6">
             About{" "}
@@ -22,7 +21,6 @@ const HeroAbout = () => {
           </p>
         </div>
 
-        {/* Our Story */}
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4 bg-linear-to-r from-[#67BCFF] via-[#9C9EFF] to-[#CB86FF] bg-clip-text text-transparent">
             Our Story
@@ -41,7 +39,6 @@ const HeroAbout = () => {
           </p>
         </div>
 
-        {/* Mission, Vision, Values */}
         <div className="grid sm:grid-cols-3 gap-8 text-center">
           {[
             {
@@ -71,7 +68,6 @@ const HeroAbout = () => {
           ))}
         </div>
 
-        {/* Why Choose Us */}
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4 bg-linear-to-r from-[#67BCFF] via-[#9C9EFF] to-[#CB86FF] bg-clip-text text-transparent">
             Why Choose Code.Compiler?
@@ -83,7 +79,6 @@ const HeroAbout = () => {
           </ul>
         </div>
 
-        {/* Call to Action */}
         <div className="text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6">
             Ready to{" "}

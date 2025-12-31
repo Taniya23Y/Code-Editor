@@ -36,7 +36,6 @@ export default function ComparisonTable() {
         <div className="max-w-4xl mx-auto">
           <div className="overflow-x-auto scrollbar-hide">
             <div className="min-w-150">
-              {/* Table header */}
               <div className="grid grid-cols-3 gap-4 mb-8">
                 <div className="col-span-1"></div>
                 <div className="col-span-1 text-center">
@@ -53,7 +52,6 @@ export default function ComparisonTable() {
                 </div>
               </div>
 
-              {/* Table body */}
               <div className="space-y-4">
                 {features.map((feature, index) => (
                   <div

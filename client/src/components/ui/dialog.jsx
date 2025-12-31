@@ -3,27 +3,22 @@ import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { XIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-/* ---------- ROOT ---------- */
 const Dialog = (props) => {
   return <DialogPrimitive.Root data-slot="dialog" {...props} />;
 };
 
-/* ---------- TRIGGER ---------- */
 const DialogTrigger = (props) => {
   return <DialogPrimitive.Trigger data-slot="dialog-trigger" {...props} />;
 };
 
-/* ---------- PORTAL ---------- */
 const DialogPortal = (props) => {
   return <DialogPrimitive.Portal data-slot="dialog-portal" {...props} />;
 };
 
-/* ---------- CLOSE ---------- */
 const DialogClose = (props) => {
   return <DialogPrimitive.Close data-slot="dialog-close" {...props} />;
 };
 
-/* ---------- OVERLAY ---------- */
 const DialogOverlay = ({ className, ...props }) => {
   return (
     <DialogPrimitive.Overlay
@@ -37,7 +32,6 @@ const DialogOverlay = ({ className, ...props }) => {
   );
 };
 
-/* ---------- CONTENT ---------- */
 const DialogContent = ({
   className,
   children,
@@ -71,7 +65,6 @@ const DialogContent = ({
   );
 };
 
-/* ---------- HEADER ---------- */
 const DialogHeader = ({ className, ...props }) => {
   return (
     <div
@@ -82,7 +75,6 @@ const DialogHeader = ({ className, ...props }) => {
   );
 };
 
-/* ---------- FOOTER ---------- */
 const DialogFooter = ({ className, ...props }) => {
   return (
     <div
@@ -96,7 +88,6 @@ const DialogFooter = ({ className, ...props }) => {
   );
 };
 
-/* ---------- TITLE ---------- */
 const DialogTitle = ({ className, ...props }) => {
   return (
     <DialogPrimitive.Title
@@ -107,7 +98,6 @@ const DialogTitle = ({ className, ...props }) => {
   );
 };
 
-/* ---------- DESCRIPTION ---------- */
 const DialogDescription = ({ className, ...props }) => {
   return (
     <DialogPrimitive.Description
@@ -118,7 +108,6 @@ const DialogDescription = ({ className, ...props }) => {
   );
 };
 
-/* ---------- EXPORTS ---------- */
 export {
   Dialog,
   DialogTrigger,

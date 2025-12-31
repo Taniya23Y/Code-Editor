@@ -46,7 +46,6 @@ const UserSavedEditorCodes = () => {
           className="bg-[#111] border border-white/10 rounded-xl shadow-lg overflow-hidden cursor-pointer hover:scale-105 transition-transform"
           onClick={() => navigate(`/editor?code=${code._id}`)}
         >
-          {/* Code Preview */}
           <div className="bg-gray-900 p-3">
             <pre className="text-xs text-green-400 h-24 overflow-auto rounded bg-gray-800 p-2">
               {code.sourceCode
@@ -55,7 +54,6 @@ const UserSavedEditorCodes = () => {
             </pre>
           </div>
 
-          {/* Code Info */}
           <div className="p-4 flex flex-col gap-2">
             <h3 className="text-lg font-semibold truncate">
               {code.title || "Untitled Code"}

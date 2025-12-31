@@ -41,7 +41,6 @@ const ForgotPassword = () => {
 
   return (
     <div className="min-h-screen flex flex-col md:flex-row bg-black text-white">
-      {/* Left Section */}
       <div className="hidden md:flex flex-1 relative flex-col justify-center items-center text-center p-8 overflow-hidden">
         <img
           src={loginImage}
@@ -59,7 +58,6 @@ const ForgotPassword = () => {
         </div>
       </div>
 
-      {/* right-section */}
       <div className="flex-1 flex items-center justify-center px-6 sm:px-12 py-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -121,7 +119,6 @@ const ForgotPassword = () => {
             </Formik>
           )}
 
-          {/* STEP 2 - Verify OTP */}
           {step === 2 && (
             <Formik
               initialValues={{ otp: "" }}
@@ -165,7 +162,6 @@ const ForgotPassword = () => {
             </Formik>
           )}
 
-          {/* STEP 3 - Reset Password */}
           {step === 3 && (
             <Formik
               initialValues={{ newPassword: "" }}
@@ -222,7 +218,6 @@ const ForgotPassword = () => {
             </Formik>
           )}
 
-          {/* STEP 4 (No longer used because we redirect) */}
           {step === 4 && (
             <p className="text-center text-green-600 font-semibold">
               Password reset successful!

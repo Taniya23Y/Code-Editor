@@ -76,7 +76,6 @@ export default function Testimonials() {
       className="py-16 sm:py-20 md:py-24 bg-black relative overflow-hidden"
       aria-labelledby="testimonials-heading"
     >
-      {/* Background elements */}
       <div className="absolute inset-0 z-0" aria-hidden="true">
         <div className="absolute top-0 left-0 w-1/3 h-1/3 bg-purple-500/10 rounded-full blur-[100px]"></div>
         <div className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-sky-500/10 rounded-full blur-[100px]"></div>

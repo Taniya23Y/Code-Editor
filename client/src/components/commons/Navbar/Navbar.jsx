@@ -97,7 +97,7 @@ const Navbar = () => {
               )}
             </div>
           )}
-          {/* Menu */}
+
           <button
             className="h-11 w-11 flex items-center justify-center text-white hover:text-[#67BCFF] rounded-md"
             onClick={() => setIsMenuOpen(!isMenuOpen)}

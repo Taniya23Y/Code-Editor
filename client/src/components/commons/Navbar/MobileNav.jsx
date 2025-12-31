@@ -40,7 +40,6 @@ const MobileNav = ({ isOpen }) => {
           isOpen ? "translate-y-0" : "-translate-y-4"
         )}
       >
-        {/* Links */}
         <Link
           to="/"
           className="py-2 px-2 border-b border-white/10 hover:bg-white/5 text-white hover:text-[#6EB4FC] rounded-md transition-colors active:bg-white/10"
@@ -75,7 +74,6 @@ const MobileNav = ({ isOpen }) => {
           About Us
         </Link>
 
-        {/* Buttons */}
         <div className="flex flex-col gap-2 pt-3">
           {!isLoggedIn && (
             <>

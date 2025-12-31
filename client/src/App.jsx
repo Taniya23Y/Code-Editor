@@ -51,7 +51,6 @@ function App() {
         <Route path="/editor/:shareId?" element={<Editor />} />
         <Route path="/developer-snippet" element={<DeveloperSnippet />} />
 
-        {/* User Auth */}
         <Route path="/signup" element={<Signup />} />
         <Route path="/verify-email" element={<VerifyEmail />} />
         <Route path="/login" element={<Login />} />
@@ -65,7 +64,6 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
 
-      {/* {!hideNavFooter && <Footer />} */}
       {!hideFooter && <Footer />}
     </>
   );

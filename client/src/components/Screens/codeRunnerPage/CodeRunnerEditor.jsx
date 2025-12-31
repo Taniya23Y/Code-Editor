@@ -515,7 +515,6 @@ const CodeRunnerEditor = ({ onRun, input = "" }) => {
                 <Download size={16} /> Download Code
               </button>
 
-              {/* Delete button only for owner */}
               {String(fetchedCode?.code?.ownerId) === String(currentUserId) && (
                 <button
                   onClick={handleDelete}

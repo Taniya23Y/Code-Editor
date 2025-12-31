@@ -34,7 +34,6 @@ const SplitPane = ({ left, right }) => {
       onMouseLeave={onMouseUp}
       className="flex h-[calc(110dvh-60px)] w-full select-none"
     >
-      {/* LEFT */}
       <div
         style={{ width: `${leftWidth}%` }}
         className="h-full overflow-hidden"
@@ -42,13 +41,11 @@ const SplitPane = ({ left, right }) => {
         {left}
       </div>
 
-      {/* DIVIDER */}
       <div
         onMouseDown={onMouseDown}
         className="w-1 cursor-col-resize bg-zinc-700 hover:bg-cyan-400 transition"
       />
 
-      {/* RIGHT */}
       <div
         style={{ width: `${100 - leftWidth}%` }}
         className="h-full overflow-hidden"
